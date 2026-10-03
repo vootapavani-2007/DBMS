@@ -1,0 +1,22 @@
+{
+  "name": "ai-security-dashboard-backend",
+  "version": "1.0.0",
+  "description": "Backend for AI-Based Network Intrusion Detection and Threat Intelligence Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test:model": "node ml-model.test.js",
+    "sync:source": "node sync-project-source.js",
+    "sync:ml-metadata": "node sync-ml-metadata.js",
+    "train:ml": "python ./scripts/train_cic_ids_model.py"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.7.4"
+  }
+}

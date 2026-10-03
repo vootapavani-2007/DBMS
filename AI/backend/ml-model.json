@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "algorithm": "nearest-centroid",
+  "features": ["log_packets", "log_bytes", "port_22_23_3389", "port_21_445_8080", "port_other", "protocol_udp"],
+  "classes": [
+    { "label": "Normal Traffic", "severity": "LOW", "centroid": [0.22, 0.30, 0.02, 0.04, 0.25, 0.12] },
+    { "label": "Brute Force", "severity": "HIGH", "centroid": [0.69, 0.42, 0.93, 0.02, 0.08, 0.05] },
+    { "label": "Port Scanning", "severity": "HIGH", "centroid": [0.58, 0.28, 0.03, 0.18, 0.78, 0.25] },
+    { "label": "Suspicious Traffic", "severity": "MEDIUM", "centroid": [0.48, 0.67, 0.06, 0.88, 0.12, 0.42] },
+    { "label": "Anomalous Network Activity", "severity": "CRITICAL", "centroid": [0.95, 0.93, 0.22, 0.35, 0.48, 0.60] }
+  ]
+}
