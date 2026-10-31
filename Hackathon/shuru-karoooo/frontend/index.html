@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101a30">
+    <title>TransitIQ | Campus Mobility</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="loginScreen" class="login-screen" aria-labelledby="loginTitle">
+    <div class="login-decoration" aria-hidden="true">
+        <span class="login-route route-a"></span>
+        <span class="login-route route-b"></span>
+        <span class="login-stop stop-a"></span>
+        <span class="login-stop stop-b"></span>
+        <span class="login-stop stop-c"></span>
+        <span class="login-stop stop-d"></span>
+    </div>
+    <div class="login-layout">
+        <div class="login-intro">
+            <a class="brand login-brand" href="#" aria-label="TransitIQ">
+                <span class="brand-mark">T</span>
+                <span><strong>TransitIQ</strong><small>Campus mobility</small></span>
+            </a>
+            <div class="login-copy">
+                <span class="login-kicker"><span class="pulse"></span> CAMPUS TRANSIT, CONNECTED</span>
+                <h1>Move your campus<br>forward.</h1>
+                <p>One clear view of every route, ride and service update across your campus network.</p>
+            </div>
+            <div class="login-footnote">A smarter way around campus.</div>
+        </div>
+        <div class="login-card-wrap">
+            <form id="loginForm" class="login-card">
+                <div class="login-card-icon">↗</div>
+                <p class="eyebrow">OPERATIONS WORKSPACE</p>
+                <h2 id="loginTitle">Welcome to TransitIQ</h2>
+                <p class="login-description">Sign in to explore the campus transport dashboard.</p>
+                <div id="registerNameField" class="auth-field" hidden>
+                    <label for="registerName">Full name</label>
+                    <input id="registerName" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Your name">
+                </div>
+                <div class="auth-field">
+                    <label for="loginEmail">Work email</label>
+                    <input id="loginEmail" name="email" type="email" autocomplete="username" maxlength="254" placeholder="you@campus.edu" required>
+                </div>
+                <div class="auth-field">
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" name="password" type="password" autocomplete="current-password" minlength="1" maxlength="72" placeholder="Enter your password" required>
+                </div>
+                <p id="authError" class="auth-error" aria-live="polite"></p>
+                <button id="loginSubmit" class="login-submit" type="submit">Sign in <span>→</span></button>
+                <p class="login-switch"><span id="authSwitchPrompt">New to TransitIQ?</span> <button id="authSwitch" type="button">Create an account</button></p>
+                <p class="login-terms">Create a password between 10 and 15 characters. Passwords are stored as secure hashes.</p>
+            </form>
+            <div class="login-card-footer"><span>TransitIQ Campus Mobility</span><span>SECURE SIGN-IN</span></div>
+        </div>
+    </div>
+</section>
+
+<div id="appShell" class="app-shell" hidden>
+    <aside class="sidebar">
+        <a class="brand" href="#overview" aria-label="TransitIQ home">
+            <span class="brand-mark">T</span>
+            <span><strong>TransitIQ</strong><small>Campus mobility</small></span>
+        </a>
+        <div class="nav-label">WORKSPACE</div>
+        <nav class="sidebar-nav" aria-label="Main navigation">
+            <a class="active" href="#overview"><span>◫</span> Overview</a>
+            <a href="#planner"><span>⌖</span> Journey planner</a>
+            <a href="#fleet"><span>▣</span> Fleet</a>
+            <a href="#drivers"><span>♙</span> Drivers</a>
+            <a href="#alerts"><span>♧</span> Service alerts</a>
+            <a href="#crowd"><span>◌</span> Crowd intelligence</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="live-label"><span class="pulse"></span> LIVE OPERATIONS</div>
+            <strong id="sidebarHealth">Connecting…</strong>
+            <p>Campus network monitoring</p>
+        </div>
+    </aside>
+
+    <main class="main-panel">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Campus transport control</p>
+                <h1 id="greeting">Good evening, operations</h1>
+                <p class="subheading">A real-time view of your campus network.</p>
+            </div>
+            <div class="topbar-actions">
+                <span id="currentDate" class="date-chip"></span>
+                <button id="refreshButton" class="icon-button" type="button" aria-label="Refresh dashboard" title="Refresh">↻</button>
+                <div id="userAvatar" class="avatar" aria-label="Signed-in user">OP</div>
+                <button id="signOutButton" class="sign-out-button" type="button" aria-label="Sign out" title="Sign out"><span aria-hidden="true">↪</span><span class="sign-out-label">Sign out</span></button>
+            </div>
+        </header>
+
+        <section id="page-overview" class="app-page active" data-page="overview" aria-labelledby="overviewTitle">
+            <div class="page-heading"><p class="eyebrow">OVERVIEW</p><h2 id="overviewTitle">Campus network</h2><p>Live performance across your campus transport network.</p></div>
+            <div class="metric-grid" aria-label="Network summary">
+                <article class="metric-card"><div class="metric-top"><span>Active vehicles</span><span class="metric-icon teal">▣</span></div><strong id="activeFleet">—</strong><small>ready or in service</small></article>
+                <article class="metric-card"><div class="metric-top"><span>Trips today</span><span class="metric-icon blue">⌁</span></div><strong id="tripsToday">—</strong><small>scheduled departures</small></article>
+                <article class="metric-card"><div class="metric-top"><span>Drivers assigned</span><span class="metric-icon violet">♙</span></div><strong id="driversAssigned">—</strong><small>on active runs</small></article>
+                <article class="metric-card"><div class="metric-top"><span>Service delays</span><span class="metric-icon amber">◷</span></div><strong id="delayedTrips">—</strong><small>trips currently delayed</small></article>
+            </div>
+            <article class="panel network-panel overview-network">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">NETWORK PULSE</p><h2>Service at a glance</h2></div>
+                    <span id="networkHealth" class="health-chip">● Checking</span>
+                </div>
+                <div class="network-visual" aria-hidden="true">
+                    <div class="network-line line-one"></div><div class="network-line line-two"></div>
+                    <span class="station station-a"></span><span class="station station-b"></span><span class="station station-c"></span>
+                    <span class="station station-d"></span><span class="station station-e"></span><span class="station station-f"></span>
+                    <span class="map-label label-a">North Gate</span><span class="map-label label-b">Library</span><span class="map-label label-c">Hostel</span><span class="map-label label-d">Admin</span>
+                </div>
+                <div class="network-stats">
+                    <div><span class="legend-dot teal-dot"></span><span>On schedule</span><strong id="onTimeCount">—</strong></div>
+                    <div><span class="legend-dot amber-dot"></span><span>Needs attention</span><strong id="attentionCount">—</strong></div>
+                </div>
+            </article>
+        </section>
+
+        <section id="page-planner" class="app-page" data-page="planner" aria-labelledby="plannerPageTitle" hidden>
+            <div class="page-heading"><p class="eyebrow">PLAN A RIDE</p><h2 id="plannerPageTitle">Journey planner</h2><p>Choose your stops and find a direct campus service.</p></div>
+            <article class="panel planner-panel">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">PLAN A RIDE</p><h2>Find your journey</h2></div>
+                    <span class="tag">Direct routes</span>
+                </div>
+                <form id="journeyForm" class="journey-form">
+                    <label>From<select id="originStop" required></select></label>
+                    <button id="swapStops" class="swap-button" type="button" aria-label="Swap origin and destination">⇅</button>
+                    <label>To<select id="destinationStop" required></select></label>
+                    <label>Date<input id="departureDate" type="date" required></label>
+                    <label>Depart after<input id="departureTime" type="time" required></label>
+                    <button class="primary-button" type="submit">Search journeys <span>→</span></button>
+                </form>
+                <p id="journeyStatus" class="inline-status" aria-live="polite">Choose your stops to see available trips.</p>
+                <div id="journeyResults" class="journey-results"></div>
+            </article>
+        </section>
+
+        <section id="page-fleet" class="app-page" data-page="fleet" aria-labelledby="fleetPageTitle" hidden>
+            <div class="page-heading"><p class="eyebrow">FLEET MANAGEMENT</p><h2 id="fleetPageTitle">Fleet</h2><p>Vehicle availability, assignments and service status.</p></div>
+            <article class="panel fleet-panel">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">FLEET MANAGEMENT</p><h2>Vehicle status</h2></div>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Vehicle</th><th>Driver</th><th>Next trip</th><th>Load</th><th>Status</th></tr></thead>
+                        <tbody id="fleetTableBody"><tr><td colspan="5" class="table-empty">Loading fleet…</td></tr></tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+
+        <section id="page-drivers" class="app-page" data-page="drivers" aria-labelledby="driversPageTitle" hidden>
+            <div class="page-heading"><p class="eyebrow">PEOPLE & SHIFTS</p><h2 id="driversPageTitle">Drivers</h2><p>Review the driver roster and current duty assignments.</p></div>
+            <article class="panel">
+                <div class="panel-heading"><div><p class="eyebrow">PEOPLE & SHIFTS</p><h2>Driver roster</h2></div></div>
+                <div id="driversGrid" class="driver-list"><p class="table-empty">Loading drivers…</p></div>
+            </article>
+        </section>
+
+        <section id="page-alerts" class="app-page" data-page="alerts" aria-labelledby="alertsPageTitle" hidden>
+            <div class="page-heading"><p class="eyebrow">LIVE UPDATES</p><h2 id="alertsPageTitle">Service alerts</h2><p>Current disruptions and updates affecting campus services.</p></div>
+            <article class="panel alerts-panel">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">LIVE UPDATES</p><h2>Service alerts</h2></div>
+                    <span id="alertCount" class="count-badge">0</span>
+                </div>
+                <div id="alertList" class="alert-list"><p class="table-empty">Loading service alerts…</p></div>
+            </article>
+        </section>
+
+        <section id="page-crowd" class="app-page" data-page="crowd" aria-labelledby="crowdPageTitle" hidden>
+            <div class="page-heading"><p class="eyebrow">DEMAND FORECAST</p><h2 id="crowdPageTitle">Crowd intelligence</h2><p>Forecast passenger demand and available capacity on upcoming departures.</p></div>
+            <article class="panel">
+                <div class="panel-heading"><div><p class="eyebrow">DEMAND FORECAST</p><h2>Crowd intelligence</h2></div><span class="tag">Next departures</span></div>
+                <div id="predictionGrid" class="prediction-list"><p class="table-empty">Loading forecasts…</p></div>
+            </article>
+        </section>
+        <footer class="footer"><span>TransitIQ Campus Mobility</span><span>Operational data refreshes on demand</span></footer>
+    </main>
+</div>
+<script src="script.js?v=separate-pages"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Java / Maven
+backend/target/
+**/target/
+backend/transitiq*
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local environment and secrets
+.env
+.env.*
